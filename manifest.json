@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest.json",
+  "name": "Cozulemez — Mustafa Kara",
+  "short_name": "Cozulemez",
+  "description": "Official Archives of Cozulemez (Mustafa Kara)",
+  "start_url": "/",
+  "scope": "/",
+  "id": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "dir": "ltr",
+  "lang": "en",
+  "theme_color": "#050507",
+  "background_color": "#050507",
+  "categories": [
+    "music",
+    "entertainment",
+    "technology"
+  ],
+  "icons": []
+}

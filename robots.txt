@@ -1,0 +1,171 @@
+# ==============================================================================
+# Cozulemez (Mustafa Kara) — Official Archives
+# Website: https://cozulemez.com/
+# Robots Exclusion Protocol (RFC 9309) & Search/AI Crawler Directives
+# ==============================================================================
+
+# Global Default Directive
+User-agent: *
+Allow: /
+
+# ------------------------------------------------------------------------------
+# Google & Alphabet Search & AI Crawlers
+# ------------------------------------------------------------------------------
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+User-agent: Storebot-Google
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+
+User-agent: Mediapartners-Google
+Allow: /
+
+# ------------------------------------------------------------------------------
+# Microsoft Bing & Copilot Crawlers
+# ------------------------------------------------------------------------------
+User-agent: Bingbot
+Allow: /
+
+User-agent: msnbot
+Allow: /
+
+User-agent: msnbot-media
+Allow: /
+
+User-agent: BingPreview
+Allow: /
+
+# ------------------------------------------------------------------------------
+# OpenAI & ChatGPT Crawlers
+# ------------------------------------------------------------------------------
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# ------------------------------------------------------------------------------
+# Anthropic & Claude Crawlers
+# ------------------------------------------------------------------------------
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# ------------------------------------------------------------------------------
+# Perplexity AI Crawler
+# ------------------------------------------------------------------------------
+User-agent: PerplexityBot
+Allow: /
+
+# ------------------------------------------------------------------------------
+# Meta AI & Facebook Social Crawlers
+# ------------------------------------------------------------------------------
+User-agent: FacebookExternalHit
+Allow: /
+
+User-agent: Facebot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+# ------------------------------------------------------------------------------
+# Apple Search & Siri Crawlers
+# ------------------------------------------------------------------------------
+User-agent: Applebot
+Allow: /
+
+User-agent: AppleNewsBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# ------------------------------------------------------------------------------
+# Yandex Search & Media Crawlers
+# ------------------------------------------------------------------------------
+User-agent: Yandex
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: YandexImages
+Allow: /
+
+User-agent: YandexMedia
+Allow: /
+
+# ------------------------------------------------------------------------------
+# Brave Search Crawler
+# ------------------------------------------------------------------------------
+User-agent: BraveSearch
+Allow: /
+
+# ------------------------------------------------------------------------------
+# You.com Search & AI Crawler
+# ------------------------------------------------------------------------------
+User-agent: YouBot
+Allow: /
+
+# ------------------------------------------------------------------------------
+# DuckDuckGo Crawler
+# ------------------------------------------------------------------------------
+User-agent: DuckDuckBot
+Allow: /
+
+# ------------------------------------------------------------------------------
+# Cohere AI Crawler
+# ------------------------------------------------------------------------------
+User-agent: cohere-ai
+Allow: /
+
+# ------------------------------------------------------------------------------
+# Additional AI & Research Crawlers
+# ------------------------------------------------------------------------------
+User-agent: CCBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+# ------------------------------------------------------------------------------
+# Host & Sitemap Declarations
+# ------------------------------------------------------------------------------
+Host: https://cozulemez.com
+Sitemap: https://cozulemez.com/sitemap.xml
