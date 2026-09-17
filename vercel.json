@@ -1,4 +1,4 @@
-﻿{
+{
   "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
@@ -25,7 +25,7 @@
       ]
     },
     {
-      "source": "/(robots\\.txt|sitemap\\.xml|manifest\\.json)",
+      "source": "/(robots.txt|sitemap.xml|manifest.json)",
       "headers": [
         {
           "key": "Cache-Control",
