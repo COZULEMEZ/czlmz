@@ -727,6 +727,20 @@
       max-width: 960px;
     }
 
+    /* UPLOADED LOGO */
+    .brand-logo {
+      width: clamp(50px, 12vw, 80px);
+      height: auto;
+      margin-bottom: 15px;
+      filter: drop-shadow(0 0 10px rgba(0, 113, 227, 0.3));
+      animation: pulseGlow 4s infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+      0% { filter: drop-shadow(0 0 5px rgba(0, 113, 227, 0.15)); }
+      100% { filter: drop-shadow(0 0 20px rgba(0, 113, 227, 0.5)); }
+    }
+
     /* İTALİK LOGO: Cozulemez (CMG Typography) */
     .brand-title {
       font-family: var(--font-family);
@@ -1195,6 +1209,7 @@
 
   <!-- Center Stage: İtalik 'Cozulemez' & Mustafa Kara -->
   <main class="center-stage">
+    <img src="logo.png" alt="Cozulemez Logo" class="brand-logo" />
     <h1 class="brand-title">Cozulemez<span class="cmg-dot">.</span></h1>
     <div class="executive-subtitle">Mustafa Kara</div>
 
