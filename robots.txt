@@ -1,5 +1,5 @@
-# ==============================================================================
-# Cozulemez (Mustafa Kara) — Official Archives
+﻿# ==============================================================================
+# Cozulemez (Mustafa Kara) â€” Official Archives
 # Website: https://cozulemez.com/
 # Robots Exclusion Protocol (RFC 9309) & Search/AI Crawler Directives
 # ==============================================================================
@@ -167,5 +167,5 @@ Allow: /
 # ------------------------------------------------------------------------------
 # Host & Sitemap Declarations
 # ------------------------------------------------------------------------------
-Host: https://cozulemez.com
 Sitemap: https://cozulemez.com/sitemap.xml
+
