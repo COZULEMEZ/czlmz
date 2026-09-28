@@ -37,13 +37,13 @@
   <link rel="manifest" href="/manifest.json">
 
   <!-- PWA & Cihaz -->
-  <meta name="theme-color" content="#fbfbfd">
+  <meta name="theme-color" content="#000000">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="Cozulemez">
   <meta name="application-name" content="Cozulemez">
   <meta name="format-detection" content="telephone=no, address=no, email=no">
-  <meta name="color-scheme" content="light">
+  <meta name="color-scheme" content="dark">
   <meta name="mobile-web-app-capable" content="yes">
 
   <!-- Bot Direktifleri — Tüm arama motorları ve AI tarayıcıları -->
@@ -699,19 +699,19 @@
 
     :root {
       --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --bg-color: #fbfbfd;
-      --text-primary: #1d1d1f;
-      --text-secondary: #515154;
-      --accent-color: #0071e3;
+      --bg-color: #000000;
+      --text-primary: #ffffff;
+      --text-secondary: #a1a1a6;
+      --accent-color: #2997ff;
       --dot-color: #ff3b30; /* CMG signature red dot */
-      --border-color: rgba(0, 0, 0, 0.08);
-      --glass-bg: rgba(255, 255, 255, 0.78);
-      --glass-blur: blur(30px) saturate(180%);
+      --border-color: rgba(255, 255, 255, 0.15);
+      --glass-bg: rgba(20, 20, 20, 0.55);
+      --glass-blur: blur(40px) saturate(200%);
       --radius-xl: 28px;
       --radius-lg: 18px;
       --radius-md: 12px;
-      --shadow-premium: 0 20px 40px rgba(0, 0, 0, 0.05);
-      --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.04);
+      --shadow-premium: 0 20px 40px rgba(0, 0, 0, 0.8);
+      --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.5);
     }
 
     html {
@@ -761,7 +761,7 @@
       -webkit-transform: translate(-50%, -50%);
       width: min(850px, 95vw);
       height: min(850px, 95vh);
-      background: radial-gradient(circle, rgba(0, 113, 227, 0.04) 0%, rgba(251, 251, 253, 0) 75%);
+      background: radial-gradient(circle, rgba(41, 151, 255, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
       pointer-events: none;
       z-index: 0;
     }
@@ -864,8 +864,8 @@
     }
 
     .social-capsule:hover {
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-      border-color: rgba(0, 0, 0, 0.12);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+      border-color: rgba(255, 255, 255, 0.25);
     }
 
     .social-action {
@@ -930,9 +930,9 @@
     }
 
     .activity-chip:hover {
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
       transform: translateY(-2px);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.8);
       border-color: rgba(0, 113, 227, 0.3);
     }
 
@@ -1023,8 +1023,8 @@
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       flex-shrink: 0;
       overflow: hidden;
       animation: spinVinyl 12s linear infinite;
@@ -1096,9 +1096,9 @@
     }
 
     .discord-standby:hover {
-      border-color: rgba(0, 0, 0, 0.15);
+      border-color: rgba(255, 255, 255, 0.3);
       color: var(--text-primary);
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
     }
 
     .standby-dot {
@@ -1115,7 +1115,9 @@
       left: 50%;
       transform: translateX(-50%) translateY(-20px);
       -webkit-transform: translateX(-50%) translateY(-20px);
-      background: rgba(255, 255, 255, 0.94);
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
       border: 1px solid var(--border-color);
       color: var(--text-primary);
       font-size: 0.8rem;
@@ -1123,7 +1125,7 @@
       font-family: var(--font-family);
       padding: 9px 20px;
       border-radius: 9999px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
       backdrop-filter: var(--glass-blur);
       -webkit-backdrop-filter: var(--glass-blur);
       pointer-events: none;
@@ -2025,5 +2027,10 @@
   </div>
 
 </html>
+
+
+
+
+
 
 
