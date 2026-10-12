@@ -1253,76 +1253,58 @@
       opacity: 0 !important;
       pointer-events: none !important;
     }
-    /* Kayd�rmal� Sayfa Mimarisi (Horizontal Smooth Snap Slider) */
-    .pages-slider {
-      display: flex;
-      flex-direction: row;
-      width: 100vw;
-      height: 100vh;
+    /* ════ HER CİHAZA KUSURSUZ MOBİL & MASAÜSTÜ UYUMU (ULTRA-RESPONSIVE ENGINE) ════ */
+    html {
+      width: 100%;
+      height: 100%;
       height: 100dvh;
-      overflow-x: auto;
-      overflow-y: hidden;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      position: relative;
-      z-index: 5;
-    }
-    .pages-slider::-webkit-scrollbar {
-      display: none;
-    }
-
-    .page-view {
-      flex: 0 0 100vw;
-      width: 100vw;
-      height: 100vh;
-      height: 100dvh;
-      scroll-snap-align: start;
-      scroll-snap-stop: always;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      padding: clamp(1rem, 2.5vh, 2.2rem) clamp(1.2rem, 4vw, 4.5rem);
-      box-sizing: border-box;
-      position: relative;
-      overflow-y: auto;
       overflow-x: hidden;
-      padding-top: clamp(4.5rem, 8vh, 5.5rem);
+      background-color: var(--bg-color);
     }
 
-    /* �st Liquid Glass Sayfa De�i�tirici Bar� */
+    body {
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+      height: 100dvh;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      overflow-y: hidden;
+      position: relative;
+    }
+
+    /* Üst Navigasyon Barı */
     .top-nav-bar {
       position: fixed;
-      top: clamp(12px, 2.5vh, 20px);
+      top: 14px;
       left: 50%;
       transform: translateX(-50%);
       -webkit-transform: translateX(-50%);
       z-index: 100;
       pointer-events: auto;
+      width: max-content;
+      max-width: 92vw;
     }
 
     .page-switcher-capsule {
       display: inline-flex;
       align-items: center;
-      background: var(--glass-bg);
-      border: 1px solid var(--border-color);
+      background: rgba(18, 18, 22, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: 9999px;
-      backdrop-filter: var(--glass-blur);
-      -webkit-backdrop-filter: var(--glass-blur);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(30px) saturate(180%);
+      -webkit-backdrop-filter: blur(30px) saturate(180%);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 255, 255, 0.05);
       padding: 4px;
       gap: 4px;
-      transition: all 0.3s ease;
     }
 
     .switcher-btn {
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      padding: 6px 16px;
+      padding: 7px 18px;
       border-radius: 9999px;
       border: none;
       background: transparent;
@@ -1338,83 +1320,106 @@
       white-space: nowrap;
     }
 
-    .switcher-btn:hover {
-      color: var(--text-primary);
-    }
-
     .switcher-btn.active {
-      background: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.15);
       color: #ffffff;
       font-weight: 600;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
     }
 
-    .btn-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.4);
-      transition: background 0.25s ease;
-    }
-    .switcher-btn.active .btn-dot {
-      background: var(--accent-color);
-      box-shadow: 0 0 8px var(--accent-color);
-    }
-
-    .badge-ep {
-      display: inline-block;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      padding: 1px 5px;
-      border-radius: 4px;
-      background: #1db954;
-      color: #000000;
-      margin-left: 2px;
-      vertical-align: middle;
-    }
-
-    /* Floating Kenar Oklar� / Y�nlendiriciler */
-    .slide-nav-hint { display: none !important; 
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      -webkit-transform: translateY(-50%);
-      z-index: 40;
+    /* Sayfa Slider Kapsayıcısı */
+    .pages-slider {
       display: flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--glass-bg);
-      border: 1px solid var(--border-color);
-      backdrop-filter: var(--glass-blur);
-      -webkit-backdrop-filter: var(--glass-blur);
-      color: var(--text-secondary);
-      font-family: var(--font-family);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      padding: 9px 16px;
-      border-radius: 9999px;
-      cursor: pointer;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      outline: none;
+      flex-direction: row;
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+      height: 100dvh;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      position: relative;
+      z-index: 5;
+      overscroll-behavior-x: contain;
     }
-    .slide-nav-hint:hover {
-      color: #ffffff;
-      border-color: rgba(255, 255, 255, 0.3);
-      transform: translateY(-50%) scale(1.04);
-      box-shadow: 0 12px 30px rgba(41, 151, 255, 0.25);
-    }
-    .slide-nav-hint.to-right {
-      right: clamp(10px, 2.5vw, 24px);
-    }
-    .slide-nav-hint.to-left {
-      left: clamp(10px, 2.5vw, 24px);
+    .pages-slider::-webkit-scrollbar {
+      display: none;
     }
 
-    /* 2. SAYFA: MUSTAFA EP SAHNES� */
+    /* Her Bir Sayfa */
+    .page-view {
+      flex: 0 0 100%;
+      width: 100%;
+      min-width: 100%;
+      max-width: 100%;
+      height: 100%;
+      height: 100dvh;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: clamp(65px, 9vh, 85px) clamp(16px, 4vw, 40px) clamp(20px, 3.5vh, 35px) clamp(16px, 4vw, 40px);
+      box-sizing: border-box;
+      position: relative;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Sayfa 1: Profil / Biyografi Alanı */
+    #pageProfile .center-stage {
+      margin: auto 0;
+      width: 100%;
+      max-width: 720px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    #pageProfile .brand-title {
+      font-size: clamp(2.8rem, 11vw, 5.8rem);
+      font-weight: 800;
+      font-style: italic;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    #pageProfile .executive-subtitle {
+      font-size: clamp(0.72rem, 1.8vw, 0.88rem);
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: var(--accent-color);
+      text-transform: uppercase;
+    }
+
+    #pageProfile .social-capsule {
+      margin-top: clamp(1rem, 2.5vh, 1.8rem);
+      padding: 9px 20px;
+      gap: clamp(14px, 3.5vw, 22px);
+      max-width: 95vw;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    #pageProfile .discord-activity-stack {
+      width: 100%;
+      max-width: 360px;
+      margin-top: clamp(0.8rem, 2vh, 1.4rem);
+      flex-shrink: 0;
+    }
+
+    /* Sayfa 2: MUSTAFA EP Sahnesi */
     .ep-stage {
       position: relative;
       z-index: 10;
@@ -1423,72 +1428,53 @@
       align-items: center;
       justify-content: center;
       width: 100%;
-      max-width: 960px;
-      flex-grow: 1;
-      padding: 0.5rem 0;
+      max-width: 900px;
+      margin: auto 0;
+      flex-shrink: 0;
     }
 
     .ep-header-pill {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       padding: 5px 14px;
       border-radius: 9999px;
-      margin-bottom: clamp(1rem, 2.5vh, 1.8rem);
+      margin-bottom: clamp(0.8rem, 2vh, 1.4rem);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-    }
-    .pulse-green-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #1db954;
-      box-shadow: 0 0 10px #1db954;
-      animation: pulseGreen 2s infinite;
-    }
-    @keyframes pulseGreen {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.85); }
-    }
-    .ep-release-tag {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      color: rgba(255, 255, 255, 0.75);
-      text-transform: uppercase;
     }
 
     .ep-showcase-grid {
       display: grid;
-      grid-template-columns: 310px 1fr;
-      gap: clamp(1.5rem, 3.5vw, 3rem);
+      grid-template-columns: 290px 1fr;
+      gap: clamp(1.4rem, 3.5vw, 2.8rem);
       width: 100%;
       align-items: center;
     }
 
-    /* EP Kapa�� ve Sol Kart */
     .ep-cover-card {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
+      width: 100%;
     }
 
     .cover-wrapper {
       position: relative;
-      width: clamp(200px, 24vw, 260px);
-      height: clamp(200px, 24vw, 260px);
-      margin-bottom: 1.1rem;
+      width: clamp(180px, 22vw, 240px);
+      height: clamp(180px, 22vw, 240px);
+      margin-bottom: 0.9rem;
       border-radius: 20px;
     }
 
     .cover-glow {
       position: absolute;
-      inset: -12px;
+      inset: -10px;
       background: radial-gradient(circle, rgba(41, 151, 255, 0.45) 0%, rgba(29, 185, 84, 0.25) 50%, transparent 75%);
-      filter: blur(24px);
+      filter: blur(22px);
       border-radius: 30px;
       z-index: 1;
       opacity: 0.8;
@@ -1508,28 +1494,16 @@
       display: block;
     }
 
-    .cover-wrapper:hover .ep-cover-img {
-      transform: scale(1.03) translateY(-3px);
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.85);
-    }
-    .cover-wrapper:hover .cover-glow {
-      opacity: 1;
-    }
-
     .ep-title {
-      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-size: clamp(2rem, 3.8vw, 2.8rem);
       font-weight: 800;
       font-style: italic;
       letter-spacing: -0.03em;
       line-height: 1.1;
       color: #ffffff;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.25rem;
       display: inline-flex;
       align-items: baseline;
-    }
-    .ep-title-dot {
-      color: var(--dot-color);
-      margin-left: 2px;
     }
 
     .ep-artist-row {
@@ -1537,32 +1511,17 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--text-secondary);
-      margin-bottom: 1rem;
-    }
-    .ep-artist-name {
-      color: #ffffff;
-      font-weight: 600;
-    }
-    .verified-badge {
-      display: inline-flex;
-      align-items: center;
-    }
-    .ep-bullet {
-      opacity: 0.4;
-    }
-    .ep-type {
-      font-size: 0.8rem;
+      margin-bottom: 0.8rem;
     }
 
-        .ep-platforms-row {
+    .ep-platforms-row {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
       flex-wrap: wrap;
-      margin-top: 0.5rem;
       width: 100%;
     }
 
@@ -1574,7 +1533,7 @@
       padding: 8px 14px;
       border-radius: 9999px;
       font-family: var(--font-family);
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 600;
       text-decoration: none;
       backdrop-filter: blur(20px);
@@ -1585,8 +1544,8 @@
       color: #ffffff;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
       white-space: nowrap;
+      cursor: pointer;
     }
-
     .platform-btn:hover {
       transform: translateY(-2px);
     }
@@ -1624,37 +1583,11 @@
       box-shadow: 0 8px 25px rgba(255, 0, 0, 0.35);
     }
 
-    .ep-spotify-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: rgba(29, 185, 84, 0.15);
-      border: 1px solid rgba(29, 185, 84, 0.35);
-      color: #1ed760;
-      font-family: var(--font-family);
-      font-size: 0.82rem;
-      font-weight: 600;
-      text-decoration: none;
-      padding: 9px 20px;
-      border-radius: 9999px;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 8px 25px rgba(29, 185, 84, 0.15);
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .ep-spotify-btn:hover {
-      background: #1ed760;
-      color: #000000;
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(29, 185, 84, 0.4);
-    }
-
-    /* Sa�: �ark� Listesi (Tracklist) */
+    /* Sağ: Parçalar (Tracklist) */
     .ep-tracklist {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
       width: 100%;
     }
 
@@ -1669,17 +1602,13 @@
       letter-spacing: 0.1em;
       color: var(--text-secondary);
     }
-    .tracklist-count {
-      color: rgba(255, 255, 255, 0.4);
-    }
 
-    /* �ark� Sat�r� Kart� (Ultra-Premium Liquid Glass Row) */
     .track-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
-      padding: 16px 22px;
+      gap: 12px;
+      padding: 14px 18px;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 16px;
@@ -1690,35 +1619,23 @@
       transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
       overflow: hidden;
-    }
-
-    .track-row::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 3px;
-      height: 100%;
-      background: #1db954;
-      opacity: 0;
-      transition: opacity 0.25s ease;
+      cursor: pointer;
+      user-select: none;
     }
 
     .track-row:hover {
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.09);
       border-color: rgba(255, 255, 255, 0.22);
       transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65), 0 0 20px rgba(41, 151, 255, 0.1);
-    }
-    .track-row:hover::before {
-      opacity: 1;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65), 0 0 20px rgba(41, 151, 255, 0.1);
     }
 
     .track-left {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       min-width: 0;
+      flex: 1 1 auto;
     }
 
     .track-num-box {
@@ -1735,44 +1652,29 @@
       font-weight: 700;
       color: var(--text-secondary);
       transition: all 0.25s ease;
-      position: relative;
-    }
-
-    .track-play-icon {
-      display: none;
-      color: #ffffff;
-    }
-
-    .track-row:hover .track-num {
-      display: none;
-    }
-    .track-row:hover .track-play-icon {
-      display: flex;
     }
     .track-row:hover .track-num-box {
       background: #1db954;
       border-color: #1db954;
       color: #000000;
     }
-    .track-row:hover .track-play-icon {
-      color: #000000;
-    }
 
     .track-info {
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 2px;
       min-width: 0;
     }
 
     .track-title-row {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
+      min-width: 0;
     }
 
     .track-name {
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 700;
       color: #ffffff;
       letter-spacing: -0.015em;
@@ -1786,7 +1688,7 @@
     }
 
     .track-badge-premium {
-      font-size: 0.62rem;
+      font-size: 0.6rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       padding: 1px 5px;
@@ -1794,50 +1696,26 @@
       background: rgba(255, 255, 255, 0.1);
       color: rgba(255, 255, 255, 0.7);
       border: 1px solid rgba(255, 255, 255, 0.12);
+      flex-shrink: 0;
     }
 
     .track-sub {
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       color: var(--text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .track-right {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
       flex-shrink: 0;
     }
 
-    /* Dinamik Ses Dalgalar� (Audio Visualizer) */
-    .audio-waves {
-      display: flex;
-      align-items: flex-end;
-      gap: 2.5px;
-      height: 14px;
-      opacity: 0.45;
-      transition: opacity 0.25s ease;
-    }
-    .track-row:hover .audio-waves {
-      opacity: 1;
-    }
-    .audio-waves .bar {
-      width: 2.5px;
-      background: #1ed760;
-      border-radius: 2px;
-      animation: soundWave 1.2s ease-in-out infinite alternate;
-    }
-    .audio-waves .bar-1 { height: 35%; animation-delay: 0.1s; }
-    .audio-waves .bar-2 { height: 80%; animation-delay: 0.3s; }
-    .audio-waves .bar-3 { height: 50%; animation-delay: 0.2s; }
-    .audio-waves .bar-4 { height: 95%; animation-delay: 0.4s; }
-
-    @keyframes soundWave {
-      0% { height: 25%; }
-      100% { height: 100%; }
-    }
-
     .track-time {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 500;
       color: var(--text-secondary);
       font-variant-numeric: tabular-nums;
@@ -1847,7 +1725,7 @@
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 600;
       padding: 5px 12px;
       border-radius: 9999px;
@@ -1855,6 +1733,7 @@
       border: 1px solid rgba(255, 255, 255, 0.12);
       color: rgba(255, 255, 255, 0.85);
       transition: all 0.25s ease;
+      cursor: pointer;
     }
     .track-row:hover .track-action-btn {
       background: #1ed760;
@@ -1862,29 +1741,376 @@
       color: #000000;
     }
 
-    /* Responsive Medya Sorgular� */
-    @media (max-width: 768px) {
+    .executive-footer {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1.2rem;
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.35);
+      margin-top: auto;
+      flex-shrink: 0;
+    }
+
+    /* ════ MOBİL & TABLET EKRAN UYUMLULUĞU (MAX-WIDTH: 820px) ════ */
+    @media (max-width: 820px) {
+      .top-nav-bar {
+        top: 10px;
+      }
+      .page-switcher-capsule {
+        padding: 3px;
+        gap: 3px;
+      }
+      .switcher-btn {
+        padding: 6px 14px;
+        font-size: 0.78rem;
+      }
+
+      .page-view {
+        padding: 60px 14px 20px 14px;
+        gap: 0.8rem;
+      }
+
+      #pageProfile .brand-title {
+        font-size: clamp(2.5rem, 12vw, 3.6rem);
+      }
+      #pageProfile .social-capsule {
+        padding: 8px 16px;
+        gap: 14px;
+        margin-top: 1rem;
+      }
+      #pageProfile .discord-activity-stack {
+        width: 100%;
+        max-width: 340px;
+        margin-top: 0.8rem;
+      }
+
+      .ep-stage {
+        width: 100%;
+        max-width: 460px;
+        margin: auto 0;
+        padding: 0;
+      }
+
+      .ep-header-pill {
+        margin-bottom: 0.6rem;
+        padding: 4px 12px;
+      }
+      .ep-release-tag {
+        font-size: 0.68rem;
+      }
+
       .ep-showcase-grid {
         grid-template-columns: 1fr;
-        gap: 1.2rem;
-        max-width: 440px;
+        gap: 1rem;
+        width: 100%;
       }
+
       .cover-wrapper {
         width: 140px;
         height: 140px;
-        margin-bottom: 0.8rem;
+        margin-bottom: 0.5rem;
       }
+
       .ep-title {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
-      .slide-nav-hint { display: none !important; 
-        display: none;
+      .ep-artist-row {
+        margin-bottom: 0.5rem;
+        font-size: 0.78rem;
       }
-      .page-view {
-        padding: 1rem 1.2rem;
-        padding-top: 4.2rem;
+
+      .ep-platforms-row {
+        gap: 6px;
+        margin-top: 0.2rem;
+      }
+      .platform-btn {
+        padding: 6px 11px;
+        font-size: 0.72rem;
+      }
+
+      .ep-tracklist {
+        width: 100%;
+        gap: 8px;
+      }
+
+      .track-row {
+        padding: 11px 13px;
+        gap: 10px;
+        border-radius: 14px;
+      }
+      .track-num-box {
+        width: 30px;
+        height: 30px;
+        font-size: 0.74rem;
+      }
+      .track-name {
+        font-size: 0.92rem;
+      }
+      .track-sub {
+        font-size: 0.7rem;
+      }
+      .track-right {
+        gap: 8px;
+      }
+      .track-time {
+        font-size: 0.72rem;
+      }
+      .track-action-btn {
+        padding: 4px 10px;
+        font-size: 0.7rem;
+      }
+
+      .executive-footer {
+        flex-direction: column;
+        gap: 4px;
+        padding-top: 0.8rem;
+        text-align: center;
+        font-size: 0.68rem;
       }
     }
+
+    /* Çok küçük telefonlar (<= 400px genişlik) */
+    @media (max-width: 400px) {
+      .page-view {
+        padding: 56px 10px 16px 10px;
+      }
+      .cover-wrapper {
+        width: 120px;
+        height: 120px;
+      }
+      .ep-title {
+        font-size: 1.75rem;
+      }
+      .audio-waves {
+        display: none !important;
+      }
+      .track-row {
+        padding: 10px 10px;
+      }
+      .track-action-btn span {
+        display: none;
+      }
+      .track-action-btn {
+        padding: 6px;
+        border-radius: 50%;
+      }
+    }
+
+    /* ════ MÜZİK PLATFORMU SEÇİM MODALI (Liquid Glass Bottom Sheet / Dialog) ════ */
+    .music-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.82);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .music-modal-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .music-modal-card {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(18, 18, 22, 0.94);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 28px;
+      padding: clamp(1.2rem, 3.5vw, 1.8rem);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.95), 0 0 50px rgba(41, 151, 255, 0.18);
+      backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(40px);
+      transform: translateY(24px) scale(0.96);
+      transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      box-sizing: border-box;
+    }
+
+    .music-modal-backdrop.open .music-modal-card {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 0.8rem;
+    }
+
+    .modal-header-info {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 0;
+    }
+
+    .modal-track-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #1ed760;
+      text-transform: uppercase;
+    }
+
+    .modal-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+
+    .modal-artist {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    .modal-close-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: rgba(255, 255, 255, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.25s ease;
+      flex-shrink: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .modal-close-btn:hover,
+    .modal-close-btn:active {
+      background: rgba(255, 255, 255, 0.22);
+      color: #ffffff;
+      transform: scale(1.06) rotate(90deg);
+    }
+
+    .modal-prompt-text {
+      font-size: 0.84rem;
+      color: rgba(255, 255, 255, 0.65);
+      margin-bottom: 1.1rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .modal-platforms-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .modal-platform-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 13px 18px;
+      border-radius: 18px;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .modal-platform-item:hover,
+    .modal-platform-item:active {
+      transform: translateY(-2px);
+    }
+
+    .modal-platform-item.spotify:hover,
+    .modal-platform-item.spotify:active {
+      background: rgba(29, 185, 84, 0.16);
+      border-color: rgba(29, 185, 84, 0.45);
+      box-shadow: 0 8px 25px rgba(29, 185, 84, 0.25);
+    }
+
+    .modal-platform-item.applemusic:hover,
+    .modal-platform-item.applemusic:active {
+      background: rgba(252, 60, 68, 0.16);
+      border-color: rgba(252, 60, 68, 0.45);
+      box-shadow: 0 8px 25px rgba(252, 60, 68, 0.25);
+    }
+
+    .modal-platform-item.youtube:hover,
+    .modal-platform-item.youtube:active {
+      background: rgba(255, 0, 0, 0.16);
+      border-color: rgba(255, 0, 0, 0.45);
+      box-shadow: 0 8px 25px rgba(255, 0, 0, 0.25);
+    }
+
+    .platform-icon-box {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .modal-platform-item.spotify .platform-icon-box {
+      background: rgba(29, 185, 84, 0.2);
+      color: #1ed760;
+    }
+    .modal-platform-item.applemusic .platform-icon-box {
+      background: rgba(252, 60, 68, 0.2);
+      color: #fc3c44;
+    }
+    .modal-platform-item.youtube .platform-icon-box {
+      background: rgba(255, 0, 0, 0.2);
+      color: #ff3333;
+    }
+
+    .platform-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex-grow: 1;
+      min-width: 0;
+    }
+
+    .platform-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .platform-desc {
+      font-size: 0.74rem;
+      color: var(--text-secondary);
+    }
+
+    .platform-arrow {
+      color: rgba(255, 255, 255, 0.4);
+      display: flex;
+      align-items: center;
+      transition: transform 0.25s ease, color 0.25s ease;
+    }
+    .modal-platform-item:hover .platform-arrow,
+    .modal-platform-item:active .platform-arrow {
+      color: #ffffff;
+      transform: translateX(3px);
+    }
+
   </style>
 </head>
 <body>
@@ -2007,7 +2233,7 @@
         <div class="ep-showcase-grid">
           <!-- Sol: EP Kapak & Detaylar -->
           <div class="ep-cover-card">
-            <div class="cover-wrapper">
+            <div class="cover-wrapper" onclick="openMusicModal('album')" role="button" tabindex="0" title="MUSTAFA (EP) - Dinleme Platformunu Seç" style="cursor: pointer;">
               <div class="cover-glow"></div>
               <img src="ep-cover.jpg" alt="MUSTAFA - EP Cozulemez" class="ep-cover-img" loading="eager">
             </div>
@@ -2055,7 +2281,7 @@
             </div>
 
             <!-- 1. ŞARKI: KIRIK KALPLER -->
-            <a href="https://open.spotify.com/track/34W368e6aN9Q2xCX8E2d5R" target="_blank" rel="noopener noreferrer" class="track-row" title="KIRIK KALPLER - Spotify'da Dinle">
+            <div class="track-row" onclick="openMusicModal('track1')" role="button" tabindex="0" title="KIRIK KALPLER - Dinleme Platformunu Seç">
               <div class="track-left">
                 <div class="track-num-box">
                   <span class="track-num">01</span>
@@ -2081,15 +2307,15 @@
                 <span class="track-time">2:26</span>
                 <div class="track-action-btn">
                   <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.54.659.3 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.02.6-1.14C9.6 9.9 15.001 10.62 18.72 12.84c.361.181.54.78.24 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.781-.18-.6.18-1.2.78-1.381 4.26-1.26 11.28-1.02 15.72 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                    <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
                   </svg>
                   <span>Dinle</span>
                 </div>
               </div>
-            </a>
+            </div>
 
             <!-- 2. ŞARKI: Üç Kalp -->
-            <a href="https://open.spotify.com/track/2KZWvwsnzbzzUKkB33V6SB" target="_blank" rel="noopener noreferrer" class="track-row" title="Üç Kalp - Spotify'da Dinle">
+            <div class="track-row" onclick="openMusicModal('track2')" role="button" tabindex="0" title="Üç Kalp - Dinleme Platformunu Seç">
               <div class="track-left">
                 <div class="track-num-box">
                   <span class="track-num">02</span>
@@ -2115,12 +2341,12 @@
                 <span class="track-time">1:40</span>
                 <div class="track-action-btn">
                   <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.54.659.3 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.02.6-1.14C9.6 9.9 15.001 10.62 18.72 12.84c.361.181.54.78.24 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.781-.18-.6.18-1.2.78-1.381 4.26-1.26 11.28-1.02 15.72 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                    <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
                   </svg>
                   <span>Dinle</span>
                 </div>
               </div>
-            </a>
+            </div>
           </div>
         </div>
       </div>
@@ -2681,7 +2907,76 @@
 
 
         
+  
   <script>
+    // Müzik Platformu Seçim Paneli (Modal) Verileri ve Fonksiyonları
+    const musicData = {
+      album: {
+        title: 'MUSTAFA (EP)',
+        badge: 'EP SEÇİMİ',
+        spotify: 'https://open.spotify.com/intl-tr/album/0QTo24U8wogU7wlU4snx5i?si=MmxuvLY4Tl6LrzGCqp5kKA',
+        apple: 'https://music.apple.com/tr/album/mustafa-single/6820731395',
+        youtube: 'https://www.youtube.com/watch?v=2JY6dtdp9ws&list=OLAK5uy_nIlzkmNuQ6j_GIVicEwxyA2tS23F7VNFw'
+      },
+      track1: {
+        title: 'KIRIK KALPLER',
+        badge: 'PARÇA 01',
+        spotify: 'https://open.spotify.com/track/34W368e6aN9Q2xCX8E2d5R',
+        apple: 'https://music.apple.com/tr/album/mustafa-single/6820731395',
+        youtube: 'https://www.youtube.com/watch?v=2JY6dtdp9ws&list=OLAK5uy_nIlzkmNuQ6j_GIVicEwxyA2tS23F7VNFw'
+      },
+      track2: {
+        title: 'Üç Kalp',
+        badge: 'PARÇA 02',
+        spotify: 'https://open.spotify.com/track/2KZWvwsnzbzzUKkB33V6SB',
+        apple: 'https://music.apple.com/tr/album/mustafa-single/6820731395',
+        youtube: 'https://www.youtube.com/watch?v=2JY6dtdp9ws&list=OLAK5uy_nIlzkmNuQ6j_GIVicEwxyA2tS23F7VNFw'
+      }
+    };
+
+    function openMusicModal(type) {
+      const data = musicData[type] || musicData.album;
+      const modal = document.getElementById('musicModal');
+      const title = document.getElementById('modalTitle');
+      const badge = document.getElementById('modalBadge');
+      const linkSpotify = document.getElementById('modalLinkSpotify');
+      const linkApple = document.getElementById('modalLinkApple');
+      const linkYoutube = document.getElementById('modalLinkYoutube');
+
+      if (title) title.textContent = data.title;
+      if (badge) badge.textContent = data.badge;
+      if (linkSpotify) linkSpotify.href = data.spotify;
+      if (linkApple) linkApple.href = data.apple;
+      if (linkYoutube) linkYoutube.href = data.youtube;
+
+      if (modal) {
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeMusicModal(e) {
+      if (e && e.target !== document.getElementById('musicModal') && !e.target.closest('.modal-close-btn')) {
+        return;
+      }
+      const modal = document.getElementById('musicModal');
+      if (modal) {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const modal = document.getElementById('musicModal');
+        if (modal && modal.classList.contains('open')) {
+          closeMusicModal();
+        }
+      }
+    });
+
     // Sayfa Slider Kontrolleri
     const pagesSlider = document.getElementById('pagesSlider');
     const btnPage0 = document.getElementById('btnPage0');
@@ -2719,6 +3014,9 @@
 
     window.addEventListener('keydown', (e) => {
       if (!pagesSlider) return;
+      const modal = document.getElementById('musicModal');
+      if (modal && modal.classList.contains('open')) return; // Modal açıkken slider geçişini engelle
+
       const index = Math.round(pagesSlider.scrollLeft / pagesSlider.clientWidth);
       if (e.key === 'ArrowRight' && index === 0) {
         goToPage(1);
@@ -2727,6 +3025,79 @@
       }
     });
   </script>
+
+
+
+  <!-- Müzik Platformu Seçim Paneli (Liquid Glass Modal) -->
+  <div class="music-modal-backdrop" id="musicModal" aria-hidden="true" onclick="closeMusicModal(event)">
+    <div class="music-modal-card" role="dialog" aria-modal="true" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div class="modal-header-info">
+          <span class="modal-track-badge" id="modalBadge">PARÇA SEÇİMİ</span>
+          <h3 class="modal-title" id="modalTitle">KIRIK KALPLER</h3>
+          <span class="modal-artist">Cozulemez &bull; MUSTAFA</span>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closeMusicModal()" aria-label="Kapat" title="Kapat (ESC)">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+          </svg>
+        </button>
+      </div>
+
+      <p class="modal-prompt-text">Nerede dinlemek istiyorsun?</p>
+
+      <div class="modal-platforms-list">
+        <!-- Spotify -->
+        <a href="https://open.spotify.com/intl-tr/album/0QTo24U8wogU7wlU4snx5i?si=MmxuvLY4Tl6LrzGCqp5kKA" id="modalLinkSpotify" target="_blank" rel="noopener noreferrer" class="modal-platform-item spotify">
+          <div class="platform-icon-box">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.54.659.3 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.02.6-1.14C9.6 9.9 15.001 10.62 18.72 12.84c.361.181.54.78.24 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.781-.18-.6.18-1.2.78-1.381 4.26-1.26 11.28-1.02 15.72 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+            </svg>
+          </div>
+          <div class="platform-meta">
+            <span class="platform-name">Spotify</span>
+            <span class="platform-desc">Spotify uygulamasında dinle</span>
+          </div>
+          <span class="platform-arrow">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+          </span>
+        </a>
+
+        <!-- Apple Music -->
+        <a href="https://music.apple.com/tr/album/mustafa-single/6820731395" id="modalLinkApple" target="_blank" rel="noopener noreferrer" class="modal-platform-item applemusic">
+          <div class="platform-icon-box">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.4c.66-.82 1.11-1.96.99-3.1-.96.04-2.11.64-2.8 1.44-.6.69-1.13 1.83-.99 2.94 1.07.08 2.15-.46 2.8-1.28z"/>
+            </svg>
+          </div>
+          <div class="platform-meta">
+            <span class="platform-name">Apple Music</span>
+            <span class="platform-desc">Apple Music'te dinle</span>
+          </div>
+          <span class="platform-arrow">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+          </span>
+        </a>
+
+        <!-- YouTube -->
+        <a href="https://www.youtube.com/watch?v=2JY6dtdp9ws&list=OLAK5uy_nIlzkmNuQ6j_GIVicEwxyA2tS23F7VNFw" id="modalLinkYoutube" target="_blank" rel="noopener noreferrer" class="modal-platform-item youtube">
+          <div class="platform-icon-box">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.55 9.376.55 9.376.55s7.505 0 9.377-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+          </div>
+          <div class="platform-meta">
+            <span class="platform-name">YouTube</span>
+            <span class="platform-desc">YouTube'da dinle</span>
+          </div>
+          <span class="platform-arrow">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+
 </body>
 
   <!-- ═══════════════════════════════════════════════════════════════════════
