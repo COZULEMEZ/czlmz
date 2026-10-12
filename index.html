@@ -688,6 +688,35 @@
     ]
   }
   </script>
+  <!-- 11. MUSICALBUM SCHEMA — MUSTAFA EP Release -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicAlbum",
+    "@id": "https://cozulemez.com/#mustafa-ep",
+    "name": "MUSTAFA",
+    "byArtist": { "@id": "https://cozulemez.com/#person" },
+    "albumReleaseType": "EP",
+    "datePublished": "2026-10-08",
+    "url": "https://open.spotify.com/intl-tr/album/0QTo24U8wogU7wlU4snx5i?si=MmxuvLY4Tl6LrzGCqp5kKA",
+    "image": "https://cozulemez.com/ep-cover.jpg",
+    "numTracks": 2,
+    "track": [
+      {
+        "@type": "MusicRecording",
+        "name": "KIRIK KALPLER",
+        "duration": "PT2M26S",
+        "url": "https://open.spotify.com/track/34W368e6aN9Q2xCX8E2d5R"
+      },
+      {
+        "@type": "MusicRecording",
+        "name": "Üç Kalp",
+        "duration": "PT1M40S",
+        "url": "https://open.spotify.com/track/2KZWvwsnzbzzUKkB33V6SB"
+      }
+    ]
+  }
+  </script>
 
   <style>
     *, *::before, *::after {
@@ -721,31 +750,20 @@
       background-color: var(--bg-color);
     }
 
-    body {
+        body {
       background-color: var(--bg-color);
       color: var(--text-primary);
       font-family: var(--font-family);
       line-height: 1.47;
       letter-spacing: -0.015em;
-      
       height: 100vh;
       height: 100dvh;
-      min-height: 100vh;
-      min-height: 100dvh;
-      max-height: 100vh;
-      max-height: 100dvh;
-      max-height: -webkit-fill-available;
+      width: 100vw;
+      margin: 0;
+      padding: 0;
       overflow: hidden;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-
-      padding: clamp(1rem, 2.5vh, 2.2rem) clamp(1.2rem, 4vw, 4.5rem);
       user-select: none;
       -webkit-user-select: none;
-      
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
@@ -1235,6 +1253,570 @@
       opacity: 0 !important;
       pointer-events: none !important;
     }
+    /* Kaydýrmalý Sayfa Mimarisi (Horizontal Smooth Snap Slider) */
+    .pages-slider {
+      display: flex;
+      flex-direction: row;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      position: relative;
+      z-index: 5;
+    }
+    .pages-slider::-webkit-scrollbar {
+      display: none;
+    }
+
+    .page-view {
+      flex: 0 0 100vw;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: clamp(1rem, 2.5vh, 2.2rem) clamp(1.2rem, 4vw, 4.5rem);
+      box-sizing: border-box;
+      position: relative;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding-top: clamp(4.5rem, 8vh, 5.5rem);
+    }
+
+    /* Üst Liquid Glass Sayfa Deðiþtirici Barý */
+    .top-nav-bar {
+      position: fixed;
+      top: clamp(12px, 2.5vh, 20px);
+      left: 50%;
+      transform: translateX(-50%);
+      -webkit-transform: translateX(-50%);
+      z-index: 100;
+      pointer-events: auto;
+    }
+
+    .page-switcher-capsule {
+      display: inline-flex;
+      align-items: center;
+      background: var(--glass-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 9999px;
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      padding: 4px;
+      gap: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .switcher-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: var(--font-family);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .switcher-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .switcher-btn.active {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .btn-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      transition: background 0.25s ease;
+    }
+    .switcher-btn.active .btn-dot {
+      background: var(--accent-color);
+      box-shadow: 0 0 8px var(--accent-color);
+    }
+
+    .badge-ep {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 1px 5px;
+      border-radius: 4px;
+      background: #1db954;
+      color: #000000;
+      margin-left: 2px;
+      vertical-align: middle;
+    }
+
+    /* Floating Kenar Oklarý / Yönlendiriciler */
+    .slide-nav-hint {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+      z-index: 40;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--glass-bg);
+      border: 1px solid var(--border-color);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      color: var(--text-secondary);
+      font-family: var(--font-family);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      padding: 9px 16px;
+      border-radius: 9999px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      outline: none;
+    }
+    .slide-nav-hint:hover {
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-50%) scale(1.04);
+      box-shadow: 0 12px 30px rgba(41, 151, 255, 0.25);
+    }
+    .slide-nav-hint.to-right {
+      right: clamp(10px, 2.5vw, 24px);
+    }
+    .slide-nav-hint.to-left {
+      left: clamp(10px, 2.5vw, 24px);
+    }
+
+    /* 2. SAYFA: MUSTAFA EP SAHNESÝ */
+    .ep-stage {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 900px;
+      flex-grow: 1;
+      padding: 0.5rem 0;
+    }
+
+    .ep-header-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 5px 14px;
+      border-radius: 9999px;
+      margin-bottom: clamp(1rem, 2.5vh, 1.8rem);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    .pulse-green-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #1db954;
+      box-shadow: 0 0 10px #1db954;
+      animation: pulseGreen 2s infinite;
+    }
+    @keyframes pulseGreen {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+    .ep-release-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: rgba(255, 255, 255, 0.75);
+      text-transform: uppercase;
+    }
+
+    .ep-showcase-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: clamp(1.5rem, 3.5vw, 3rem);
+      width: 100%;
+      align-items: center;
+    }
+
+    /* EP Kapaðý ve Sol Kart */
+    .ep-cover-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .cover-wrapper {
+      position: relative;
+      width: clamp(170px, 22vw, 240px);
+      height: clamp(170px, 22vw, 240px);
+      margin-bottom: 1.1rem;
+      border-radius: 20px;
+    }
+
+    .cover-glow {
+      position: absolute;
+      inset: -12px;
+      background: radial-gradient(circle, rgba(41, 151, 255, 0.45) 0%, rgba(29, 185, 84, 0.25) 50%, transparent 75%);
+      filter: blur(24px);
+      border-radius: 30px;
+      z-index: 1;
+      opacity: 0.8;
+      transition: opacity 0.4s ease;
+    }
+
+    .ep-cover-img {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+      display: block;
+    }
+
+    .cover-wrapper:hover .ep-cover-img {
+      transform: scale(1.03) translateY(-3px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.85);
+    }
+    .cover-wrapper:hover .cover-glow {
+      opacity: 1;
+    }
+
+    .ep-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      font-style: italic;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: #ffffff;
+      margin-bottom: 0.3rem;
+      display: inline-flex;
+      align-items: baseline;
+    }
+    .ep-title-dot {
+      color: var(--dot-color);
+      margin-left: 2px;
+    }
+
+    .ep-artist-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+    .ep-artist-name {
+      color: #ffffff;
+      font-weight: 600;
+    }
+    .verified-badge {
+      display: inline-flex;
+      align-items: center;
+    }
+    .ep-bullet {
+      opacity: 0.4;
+    }
+    .ep-type {
+      font-size: 0.8rem;
+    }
+
+    .ep-spotify-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(29, 185, 84, 0.15);
+      border: 1px solid rgba(29, 185, 84, 0.35);
+      color: #1ed760;
+      font-family: var(--font-family);
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 9px 20px;
+      border-radius: 9999px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 8px 25px rgba(29, 185, 84, 0.15);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .ep-spotify-btn:hover {
+      background: #1ed760;
+      color: #000000;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(29, 185, 84, 0.4);
+    }
+
+    /* Sað: Þarký Listesi (Tracklist) */
+    .ep-tracklist {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .tracklist-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 4px 6px 4px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--text-secondary);
+    }
+    .tracklist-count {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* Þarký Satýrý Kartý (Ultra-Premium Liquid Glass Row) */
+    .track-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .track-row::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: #1db954;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .track-row:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.22);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65), 0 0 20px rgba(41, 151, 255, 0.1);
+    }
+    .track-row:hover::before {
+      opacity: 1;
+    }
+
+    .track-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .track-num-box {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .track-play-icon {
+      display: none;
+      color: #ffffff;
+    }
+
+    .track-row:hover .track-num {
+      display: none;
+    }
+    .track-row:hover .track-play-icon {
+      display: flex;
+    }
+    .track-row:hover .track-num-box {
+      background: #1db954;
+      border-color: #1db954;
+      color: #000000;
+    }
+    .track-row:hover .track-play-icon {
+      color: #000000;
+    }
+
+    .track-info {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 0;
+    }
+
+    .track-title-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .track-name {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.015em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: color 0.25s ease;
+    }
+    .track-row:hover .track-name {
+      color: #1ed760;
+    }
+
+    .track-badge-premium {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 1px 5px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .track-sub {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+    }
+
+    .track-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    /* Dinamik Ses Dalgalarý (Audio Visualizer) */
+    .audio-waves {
+      display: flex;
+      align-items: flex-end;
+      gap: 2.5px;
+      height: 14px;
+      opacity: 0.45;
+      transition: opacity 0.25s ease;
+    }
+    .track-row:hover .audio-waves {
+      opacity: 1;
+    }
+    .audio-waves .bar {
+      width: 2.5px;
+      background: #1ed760;
+      border-radius: 2px;
+      animation: soundWave 1.2s ease-in-out infinite alternate;
+    }
+    .audio-waves .bar-1 { height: 35%; animation-delay: 0.1s; }
+    .audio-waves .bar-2 { height: 80%; animation-delay: 0.3s; }
+    .audio-waves .bar-3 { height: 50%; animation-delay: 0.2s; }
+    .audio-waves .bar-4 { height: 95%; animation-delay: 0.4s; }
+
+    @keyframes soundWave {
+      0% { height: 25%; }
+      100% { height: 100%; }
+    }
+
+    .track-time {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .track-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.85);
+      transition: all 0.25s ease;
+    }
+    .track-row:hover .track-action-btn {
+      background: #1ed760;
+      border-color: #1ed760;
+      color: #000000;
+    }
+
+    /* Responsive Medya Sorgularý */
+    @media (max-width: 768px) {
+      .ep-showcase-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+        max-width: 440px;
+      }
+      .cover-wrapper {
+        width: 140px;
+        height: 140px;
+        margin-bottom: 0.8rem;
+      }
+      .ep-title {
+        font-size: 1.8rem;
+      }
+      .slide-nav-hint {
+        display: none;
+      }
+      .page-view {
+        padding: 1rem 1.2rem;
+        padding-top: 4.2rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1247,6 +1829,31 @@
 
   <!-- Ambient Light Reflection -->
   <div class="ambient-glow"></div>
+
+  <!-- Üst Liquid Glass Sayfa Deðiþtirici Barý -->
+  <header class="top-nav-bar">
+    <nav class="page-switcher-capsule" aria-label="Sayfa Seçimi">
+      <button type="button" class="switcher-btn active" id="btnPage0" onclick="goToPage(0)">
+        <span class="btn-dot"></span>
+        <span class="btn-text">Biyografi</span>
+      </button>
+      <button type="button" class="switcher-btn" id="btnPage1" onclick="goToPage(1)">
+        <span class="btn-dot"></span>
+        <span class="btn-text">MUSTAFA <span class="badge-ep">EP</span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Kaydýrmalý Sayfalar Kapsayýcýsý (Horizontal Smooth Snap Slider) -->
+  <div class="pages-slider" id="pagesSlider">
+
+    <!-- ==== SAYFA 1: BÝYOGRAFÝ & ANA EKRAN ==== -->
+    <section class="page-view" id="pageProfile">
+      <!-- Sað Kaydýrma Ýpucu Butonu -->
+      <button type="button" class="slide-nav-hint to-right" onclick="goToPage(1)" title="MUSTAFA EP Sayfasýna Geç">
+        <span>MUSTAFA • EP</span>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+      </button>
 
   <!-- Center Stage: Ä°talik 'Cozulemez' & Mustafa Kara -->
   <main class="center-stage">
@@ -1308,6 +1915,133 @@
     <span class="footer-left">All Rights Reserved 2026 Cozulemez</span>
     <span class="footer-right">Official Archives of Cozulemez</span>
   </footer>
+    </section>
+
+    <!-- ==== SAYFA 2: MUSTAFA - EP MÜZÝK VÝTRÝNÝ ==== -->
+    <section class="page-view" id="pageMusic">
+      <!-- Sol Geri Ýpucu Butonu -->
+      <button type="button" class="slide-nav-hint to-left" onclick="goToPage(0)" title="Biyografi Sayfasýna Dön">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        <span>Biyografi</span>
+      </button>
+
+      <!-- MUSTAFA EP Sahnesi -->
+      <div class="ep-stage">
+        <div class="ep-header-pill">
+          <span class="pulse-green-dot"></span>
+          <span class="ep-release-tag">OFFICIAL EP RELEASE • 2026</span>
+        </div>
+
+        <div class="ep-showcase-grid">
+          <!-- Sol: EP Kapak & Detaylar -->
+          <div class="ep-cover-card">
+            <div class="cover-wrapper">
+              <div class="cover-glow"></div>
+              <img src="ep-cover.jpg" alt="MUSTAFA - EP Cozulemez" class="ep-cover-img" loading="eager">
+            </div>
+            <h2 class="ep-title">MUSTAFA<span class="ep-title-dot">.</span></h2>
+            <div class="ep-artist-row">
+              <span class="ep-artist-name">Cozulemez</span>
+              <span class="verified-badge" title="Doðrulanmýþ Sanatçý">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="#2997ff"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              </span>
+              <span class="ep-bullet">•</span>
+              <span class="ep-type">2 Þarký • 4 dk</span>
+            </div>
+            <a href="https://open.spotify.com/intl-tr/album/0QTo24U8wogU7wlU4snx5i?si=MmxuvLY4Tl6LrzGCqp5kKA" target="_blank" rel="noopener noreferrer" class="ep-spotify-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.54.659.3 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.02.6-1.14C9.6 9.9 15.001 10.62 18.72 12.84c.361.181.54.78.24 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.781-.18-.6.18-1.2.78-1.381 4.26-1.26 11.28-1.02 15.72 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+              </svg>
+              <span>Spotify'da Albümü Aç</span>
+            </a>
+          </div>
+
+          <!-- Sað: Parçalar (Tracklist) -->
+          <div class="ep-tracklist">
+            <div class="tracklist-label">
+              <span>PARÇALAR</span>
+              <span class="tracklist-count">2 TRACKS</span>
+            </div>
+
+            <!-- 1. ÞARKI: KIRIK KALPLER -->
+            <a href="https://open.spotify.com/track/34W368e6aN9Q2xCX8E2d5R" target="_blank" rel="noopener noreferrer" class="track-row" title="KIRIK KALPLER - Spotify'da Dinle">
+              <div class="track-left">
+                <div class="track-num-box">
+                  <span class="track-num">01</span>
+                  <span class="track-play-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                  </span>
+                </div>
+                <div class="track-info">
+                  <div class="track-title-row">
+                    <span class="track-name">KIRIK KALPLER</span>
+                    <span class="track-badge-premium">MASTER</span>
+                  </div>
+                  <div class="track-sub">Cozulemez • MUSTAFA</div>
+                </div>
+              </div>
+              <div class="track-right">
+                <div class="audio-waves" aria-hidden="true">
+                  <span class="bar bar-1"></span>
+                  <span class="bar bar-2"></span>
+                  <span class="bar bar-3"></span>
+                  <span class="bar bar-4"></span>
+                </div>
+                <span class="track-time">2:26</span>
+                <div class="track-action-btn">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.54.659.3 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.02.6-1.14C9.6 9.9 15.001 10.62 18.72 12.84c.361.181.54.78.24 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.781-.18-.6.18-1.2.78-1.381 4.26-1.26 11.28-1.02 15.72 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                  </svg>
+                  <span>Dinle</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- 2. ÞARKI: Üç Kalp -->
+            <a href="https://open.spotify.com/track/2KZWvwsnzbzzUKkB33V6SB" target="_blank" rel="noopener noreferrer" class="track-row" title="Üç Kalp - Spotify'da Dinle">
+              <div class="track-left">
+                <div class="track-num-box">
+                  <span class="track-num">02</span>
+                  <span class="track-play-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                  </span>
+                </div>
+                <div class="track-info">
+                  <div class="track-title-row">
+                    <span class="track-name">Üç Kalp</span>
+                    <span class="track-badge-premium">MASTER</span>
+                  </div>
+                  <div class="track-sub">Cozulemez • MUSTAFA</div>
+                </div>
+              </div>
+              <div class="track-right">
+                <div class="audio-waves" aria-hidden="true">
+                  <span class="bar bar-1"></span>
+                  <span class="bar bar-2"></span>
+                  <span class="bar bar-3"></span>
+                  <span class="bar bar-4"></span>
+                </div>
+                <span class="track-time">1:40</span>
+                <div class="track-action-btn">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.54.659.3 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.02.6-1.14C9.6 9.9 15.001 10.62 18.72 12.84c.361.181.54.78.24 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.781-.18-.6.18-1.2.78-1.381 4.26-1.26 11.28-1.02 15.72 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+                  </svg>
+                  <span>Dinle</span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="executive-footer">
+        <span class="footer-left">MUSTAFA • EP © 2026 Cozulemez Music</span>
+        <span class="footer-right">Official Release</span>
+      </footer>
+    </section>
+
+  </div>
 
   <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
        INVISIBLE CRAWLER & AI KNOWLEDGE VAULT
@@ -1857,6 +2591,52 @@
 
 
         
+  <script>
+    // Sayfa Slider Kontrolleri
+    const pagesSlider = document.getElementById('pagesSlider');
+    const btnPage0 = document.getElementById('btnPage0');
+    const btnPage1 = document.getElementById('btnPage1');
+
+    function goToPage(index) {
+      if (!pagesSlider) return;
+      const targetX = index * pagesSlider.clientWidth;
+      pagesSlider.scrollTo({ left: targetX, behavior: 'smooth' });
+      updateNav(index);
+    }
+
+    function updateNav(index) {
+      if (btnPage0 && btnPage1) {
+        if (index === 0) {
+          btnPage0.classList.add('active');
+          btnPage1.classList.remove('active');
+        } else {
+          btnPage1.classList.add('active');
+          btnPage0.classList.remove('active');
+        }
+      }
+    }
+
+    if (pagesSlider) {
+      let scrollTimeout;
+      pagesSlider.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          const index = Math.round(pagesSlider.scrollLeft / pagesSlider.clientWidth);
+          updateNav(index);
+        }, 50);
+      }, { passive: true });
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (!pagesSlider) return;
+      const index = Math.round(pagesSlider.scrollLeft / pagesSlider.clientWidth);
+      if (e.key === 'ArrowRight' && index === 0) {
+        goToPage(1);
+      } else if (e.key === 'ArrowLeft' && index === 1) {
+        goToPage(0);
+      }
+    });
+  </script>
 </body>
 
   <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
@@ -2027,6 +2807,9 @@
   </div>
 
 </html>
+
+
+
 
 
 
