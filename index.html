@@ -1171,85 +1171,6 @@
     }
 
     /* Footer (CMG Apple Minimalist) */
-    
-    /* ════ BANDSINTOWN TUR & CANLI ETKİNLİK WIDGET ALANI ════ */
-    .bandsintown-stage {
-      width: 100%;
-      max-width: 620px;
-      margin: 1.2rem auto 1.5rem auto;
-      position: relative;
-      z-index: 10;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      box-sizing: border-box;
-      flex-shrink: 0;
-    }
-
-    .bit-header-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 5px 14px;
-      border-radius: 9999px;
-      margin-bottom: 0.8rem;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-    }
-
-    .bit-live-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #ff3333;
-      box-shadow: 0 0 10px #ff3333;
-      animation: pulseRed 2s infinite;
-    }
-
-    @keyframes pulseRed {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.45; transform: scale(0.85); }
-    }
-
-    .bit-header-tag {
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      color: rgba(255, 255, 255, 0.85);
-      text-transform: uppercase;
-    }
-
-    .bit-widget-wrapper {
-      width: 100%;
-      max-width: 100%;
-      background: rgba(16, 16, 20, 0.78);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 20px;
-      padding: clamp(10px, 2.5vw, 16px);
-      backdrop-filter: blur(25px) saturate(180%);
-      -webkit-backdrop-filter: blur(25px) saturate(180%);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 255, 255, 0.03);
-      overflow-x: hidden;
-      box-sizing: border-box;
-      min-height: 120px;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .bit-widget-wrapper:hover {
-      border-color: rgba(255, 255, 255, 0.22);
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 35px rgba(41, 151, 255, 0.1);
-    }
-
-    .bit-widget-wrapper .bit-widget-initializer {
-      display: block;
-      width: 100%;
-      max-width: 100%;
-      text-decoration: none;
-      overflow-x: hidden;
-    }
-
     .executive-footer {
       position: relative;
       z-index: 10;
@@ -1491,24 +1412,10 @@
       justify-content: center;
     }
 
-    
-    #pageProfile .center-stage {
-      margin: clamp(1rem, 2.5vh, 2rem) 0 0.5rem 0;
-      width: 100%;
-      max-width: 720px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      flex-shrink: 0;
-    }
-
     #pageProfile .discord-activity-stack {
       width: 100%;
       max-width: 360px;
-      margin-top: 0.8rem;
-      margin-bottom: 0.4rem;
+      margin-top: clamp(0.8rem, 2vh, 1.4rem);
       flex-shrink: 0;
     }
 
@@ -1877,18 +1784,7 @@
       #pageProfile .discord-activity-stack {
         width: 100%;
         max-width: 340px;
-        margin-top: 0.6rem;
-        margin-bottom: 0.4rem;
-      }
-
-      .bandsintown-stage {
-        max-width: 100%;
-        margin: 0.8rem auto 1.2rem auto;
-      }
-
-      .bit-widget-wrapper {
-        border-radius: 16px;
-        padding: 8px 6px;
+        margin-top: 0.8rem;
       }
 
       .ep-stage {
@@ -2000,11 +1896,6 @@
       .track-action-btn {
         padding: 6px;
         border-radius: 50%;
-      }
-
-      .bit-widget-wrapper {
-        border-radius: 14px;
-        padding: 6px 4px;
       }
     }
 
@@ -2314,35 +2205,6 @@
       <span>Discord durumuna bağlanılıyor...</span>
     </div>
   </div>
-
-      <!-- Bandsintown Canlı Performans & Turne Alanı -->
-      <section class="bandsintown-stage" aria-label="Canlı Performans & Turne">
-        <div class="bit-header-pill">
-          <span class="bit-live-dot"></span>
-          <span class="bit-header-tag">CANLI PERFORMANS &amp; TUR</span>
-        </div>
-        <div class="bit-widget-wrapper">
-          <script charset="utf-8" src="https://widgetv3.bandsintown.com/main.min.js"></script>
-          <a class="bit-widget-initializer"
-            data-artist-name="id_15670320"
-            data-app-id="fb8b5441ed49277138f46dae5eced7bc"
-            data-background-color="rgba(0,0,0,1)"
-            data-text-color="rgba(255,255,255,1)"
-            data-bit-logo-color="rgba(255,255,255,1)"
-            data-font="Helvetica"
-            data-date-orientation="horizontal"
-            data-date-format="MMMM DD"
-            data-event-rsvp-position="left"
-            data-follow-section-position="top"
-            data-follow-section-alignment="center"
-            data-follow-section-cta-text="FOLLOW"
-            href="https://www.bandsintown.com/a/15670320"
-            target="_blank"
-            rel="noopener noreferrer"
-          ></a>
-        </div>
-      </section>
-
 
   <!-- Footer -->
   <footer class="executive-footer">
