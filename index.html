@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" class="standby-active">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -13,6 +13,8 @@
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="shortcut icon" type="image/png" href="logo.png">
   <link rel="apple-touch-icon" href="logo.png">
+  <link rel="preload" as="image" href="hourglass-apple.png">
+  <link rel="preload" as="image" href="infinity-apple.png">
 
   <!-- ══ GOOGLE FEATURED SNIPPET & AI OVERVIEW İÇİN ANA META ══ -->
   <!-- Google bu description'ı snippet olarak gösterir — maksimum bilgi yoğunluğu -->
@@ -2110,10 +2112,159 @@
       color: #ffffff;
       transform: translateX(3px);
     }
+    /* ========================================================
+       STANDBY MODE: IOS EMOJI & INFINITY HOURGLASS
+       Tüm arka plan / SEO / DOM verileri korunur, ekranda sadece
+       AMOLED siyah üzerinde Apple iOS Kum Saati ve Sonsuzluk kalır
+       ======================================================== */
+    html.standby-active,
+    body.standby-active {
+      overflow: hidden !important;
+      height: 100% !important;
+      background-color: #000000 !important;
+      overscroll-behavior: none !important;
+    }
+
+    #standbyOverlay {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      background-color: #000000;
+      z-index: 2147483647;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: none;
+      pointer-events: auto;
+    }
+
+    .standby-stage {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      animation: standbyFloat 3.8s ease-in-out infinite alternate;
+    }
+
+    .standby-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 76px;
+      height: 76px;
+      will-change: transform, opacity;
+    }
+
+    .apple-emoji-asset {
+      width: 68px;
+      height: 68px;
+      object-fit: contain;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: high-quality;
+      filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.7));
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    /* Kum Saati: Sonsuz Döngü / Akıcı Dönüş Animasyonu */
+    .hourglass-loop {
+      animation: infiniteHourglassTurn 3.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+      transform-origin: center center;
+    }
+
+    @keyframes infiniteHourglassTurn {
+      0% {
+        transform: rotate(0deg);
+      }
+      32% {
+        transform: rotate(180deg);
+      }
+      50% {
+        transform: rotate(180deg);
+      }
+      82% {
+        transform: rotate(360deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Sonsuzluk İşareti: Nabız & Büyülü Işık Parıltısı */
+    .infinity-glow {
+      animation: infiniteGlowPulse 2.6s ease-in-out infinite alternate;
+      transform-origin: center center;
+    }
+
+    @keyframes infiniteGlowPulse {
+      0% {
+        transform: scale(0.96);
+        opacity: 0.82;
+        filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0));
+      }
+      50% {
+        opacity: 1;
+        filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.45));
+      }
+      100% {
+        transform: scale(1.08);
+        opacity: 0.96;
+        filter: drop-shadow(0 0 22px rgba(255, 255, 255, 0.65));
+      }
+    }
+
+    /* Ortak StandBy Havada Süzülme Hareketi */
+    @keyframes standbyFloat {
+      0% {
+        transform: translateY(0px);
+      }
+      100% {
+        transform: translateY(-8px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .standby-stage {
+        gap: 22px;
+      }
+      .standby-item {
+        width: 62px;
+        height: 62px;
+      }
+      .apple-emoji-asset {
+        width: 56px;
+        height: 56px;
+      }
+    }
+
 
   </style>
 </head>
-<body>
+<body class="standby-active">
+
+  <!-- ==========================================
+       STANDBY THEME (IOS EMOJI & INFINITY HOURGLASS)
+       Site DOM & SEO verileri arkada çalışmaya devam eder
+       ========================================== -->
+  <aside id="standbyOverlay" class="standby-overlay" aria-label="Standby" role="status">
+    <div class="standby-stage">
+      <div class="standby-item hourglass-loop" title="⏳">
+        <img src="hourglass-apple.png" alt="⏳" class="apple-emoji-asset" width="160" height="160" decoding="async" fetchpriority="high" />
+      </div>
+      <div class="standby-item infinity-glow" title="♾️">
+        <img src="infinity-apple.png" alt="♾️" class="apple-emoji-asset" width="160" height="160" decoding="async" fetchpriority="high" />
+      </div>
+    </div>
+  </aside>
+
+
 
   <!-- Toast Bildirim -->
   <div class="toast-pill" id="toastMessage">
