@@ -13,8 +13,9 @@
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="shortcut icon" type="image/png" href="logo.png">
   <link rel="apple-touch-icon" href="logo.png">
-  <link rel="preload" as="image" href="hourglass-apple.png">
-  <link rel="preload" as="image" href="infinity-apple.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
 
   <!-- ══ GOOGLE FEATURED SNIPPET & AI OVERVIEW İÇİN ANA META ══ -->
   <!-- Google bu description'ı snippet olarak gösterir — maksimum bilgi yoğunluğu -->
@@ -2113,9 +2114,10 @@
       transform: translateX(3px);
     }
     /* ========================================================
-       STANDBY MODE: IOS EMOJI & INFINITY HOURGLASS
-       Tüm arka plan / SEO / DOM verileri korunur, ekranda sadece
-       AMOLED siyah üzerinde Apple iOS Kum Saati ve Sonsuzluk kalır
+       STANDBY MODE: FOREVER TYPOGRAPHY & COUNTDOWN
+       - F, R, E: Görünmez/hayalet harfler (hafif yanıp söner, tam açılmaz)
+       - O, V, E, R: Açık renkler sürekli net ve açık
+       - 10 Ocak 2027 Geri Sayımı
        ======================================================== */
     html.standby-active,
     body.standby-active {
@@ -2145,124 +2147,220 @@
 
     .standby-stage {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 32px;
-      animation: standbyFloat 3.8s ease-in-out infinite alternate;
+      text-align: center;
+      padding: 24px;
+      max-width: 900px;
+      width: 100%;
     }
 
-    .standby-item {
+    /* FOREVER Kelimesi */
+    .forever-typography {
+      font-family: 'Cinzel', 'Times New Roman', 'Baskerville', 'Playfair Display', serif;
+      font-size: clamp(38px, 8vw, 76px);
+      letter-spacing: clamp(0.14em, 2.5vw, 0.25em);
+      text-transform: uppercase;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 76px;
-      height: 76px;
-      will-change: transform, opacity;
+      line-height: 1;
+      margin-bottom: clamp(36px, 7vh, 56px);
+      will-change: transform;
     }
 
-    .apple-emoji-asset {
-      width: 68px;
-      height: 68px;
-      object-fit: contain;
-      image-rendering: -webkit-optimize-contrast;
-      image-rendering: high-quality;
-      filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.7));
-      pointer-events: none;
+    .forever-char {
+      display: inline-block;
       user-select: none;
-      -webkit-user-drag: none;
+      -webkit-user-select: none;
     }
 
-    /* Kum Saati: Sonsuz Döngü / Akıcı Dönüş Animasyonu */
-    .hourglass-loop {
-      animation: infiniteHourglassTurn 3.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
-      transform-origin: center center;
+    /* Sürekli açık, net ve parlak kalan harfler: O, V, E, R (OVER) */
+    .solid-char {
+      color: #ffffff;
+      opacity: 1;
+      filter: none;
+      text-shadow: 0 0 14px rgba(255, 255, 255, 0.4);
     }
 
-    @keyframes infiniteHourglassTurn {
+    /* Görünmez / hayalet harfler: F, R, E
+       Hafif yanıp söner, tam renkleri açılmaz */
+    .ghost-char {
+      color: #ffffff;
+      opacity: 0.16;
+      filter: blur(2.2px);
+      will-change: opacity, filter;
+      animation: ghostFlickerBreathe 4.2s ease-in-out infinite alternate;
+    }
+
+    .char-f {
+      animation-delay: 0s;
+    }
+    .char-r1 {
+      animation-delay: 0.7s;
+    }
+    .char-e1 {
+      animation-delay: 1.4s;
+    }
+
+    @keyframes ghostFlickerBreathe {
       0% {
-        transform: rotate(0deg);
+        opacity: 0.10;
+        filter: blur(2.6px);
       }
-      32% {
-        transform: rotate(180deg);
+      25% {
+        opacity: 0.26;
+        filter: blur(1.8px);
       }
-      50% {
-        transform: rotate(180deg);
+      45% {
+        opacity: 0.16;
+        filter: blur(2.4px);
       }
-      82% {
-        transform: rotate(360deg);
+      70% {
+        opacity: 0.36;
+        filter: blur(1.3px);
+      }
+      85% {
+        opacity: 0.24;
+        filter: blur(2.0px);
       }
       100% {
-        transform: rotate(360deg);
+        opacity: 0.12;
+        filter: blur(2.6px);
       }
     }
 
-    /* Sonsuzluk İşareti: Nabız & Büyülü Işık Parıltısı */
-    .infinity-glow {
-      animation: infiniteGlowPulse 2.6s ease-in-out infinite alternate;
-      transform-origin: center center;
+    /* 10 Ocak 2027 Geri Sayım Bölümü */
+    .countdown-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(8px, 2.2vw, 20px);
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', sans-serif;
     }
 
-    @keyframes infiniteGlowPulse {
-      0% {
-        transform: scale(0.96);
-        opacity: 0.82;
-        filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0));
-      }
-      50% {
-        opacity: 1;
-        filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.45));
-      }
-      100% {
-        transform: scale(1.08);
-        opacity: 0.96;
-        filter: drop-shadow(0 0 22px rgba(255, 255, 255, 0.65));
-      }
+    .countdown-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: clamp(52px, 12vw, 84px);
     }
 
-    /* Ortak StandBy Havada Süzülme Hareketi */
-    @keyframes standbyFloat {
-      0% {
-        transform: translateY(0px);
-      }
-      100% {
-        transform: translateY(-8px);
-      }
+    .countdown-digits {
+      font-size: clamp(24px, 5vw, 40px);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      font-variant-numeric: tabular-nums;
+      color: #ffffff;
+      text-shadow: 0 0 16px rgba(255, 255, 255, 0.25);
+      line-height: 1.1;
+    }
+
+    .countdown-tag {
+      font-size: clamp(9px, 1.8vw, 11px);
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.42);
+      margin-top: 8px;
+    }
+
+    .countdown-colon {
+      font-size: clamp(20px, 4vw, 32px);
+      font-weight: 200;
+      color: rgba(255, 255, 255, 0.28);
+      margin-bottom: 20px;
+      user-select: none;
     }
 
     @media (max-width: 480px) {
-      .standby-stage {
-        gap: 22px;
+      .forever-typography {
+        margin-bottom: 32px;
       }
-      .standby-item {
-        width: 62px;
-        height: 62px;
+      .countdown-box {
+        gap: 6px;
       }
-      .apple-emoji-asset {
-        width: 56px;
-        height: 56px;
+      .countdown-col {
+        min-width: 46px;
+      }
+      .countdown-tag {
+        letter-spacing: 0.16em;
+      }
+      .countdown-colon {
+        margin-bottom: 18px;
       }
     }
-
-
   </style>
 </head>
 <body class="standby-active">
 
   <!-- ==========================================
-       STANDBY THEME (IOS EMOJI & INFINITY HOURGLASS)
+       STANDBY THEME (FOREVER & COUNTDOWN TO 10 JAN 2027)
        Site DOM & SEO verileri arkada çalışmaya devam eder
        ========================================== -->
   <aside id="standbyOverlay" class="standby-overlay" aria-label="Standby" role="status">
     <div class="standby-stage">
-      <div class="standby-item hourglass-loop" title="⏳">
-        <img src="hourglass-apple.png" alt="⏳" class="apple-emoji-asset" width="160" height="160" decoding="async" fetchpriority="high" />
+      <!-- FOREVER Tipografisi (O V E R açık, F R E hafif yanıp sönen görünmez) -->
+      <div class="forever-typography" aria-label="FOREVER">
+        <span class="forever-char ghost-char char-f" aria-hidden="true">F</span>
+        <span class="forever-char solid-char char-o" aria-hidden="true">O</span>
+        <span class="forever-char ghost-char char-r1" aria-hidden="true">R</span>
+        <span class="forever-char ghost-char char-e1" aria-hidden="true">E</span>
+        <span class="forever-char solid-char char-v" aria-hidden="true">V</span>
+        <span class="forever-char solid-char char-e2" aria-hidden="true">E</span>
+        <span class="forever-char solid-char char-r2" aria-hidden="true">R</span>
       </div>
-      <div class="standby-item infinity-glow" title="♾️">
-        <img src="infinity-apple.png" alt="♾️" class="apple-emoji-asset" width="160" height="160" decoding="async" fetchpriority="high" />
+
+      <!-- 10 Ocak 2027 Geri Sayım -->
+      <div class="countdown-box" id="standbyCountdown" aria-label="10 Ocak 2027 Geri Sayımı">
+        <div class="countdown-col">
+          <span class="countdown-digits" id="cdDays">00</span>
+          <span class="countdown-tag">GÜN</span>
+        </div>
+        <span class="countdown-colon" aria-hidden="true">:</span>
+        <div class="countdown-col">
+          <span class="countdown-digits" id="cdHours">00</span>
+          <span class="countdown-tag">SAAT</span>
+        </div>
+        <span class="countdown-colon" aria-hidden="true">:</span>
+        <div class="countdown-col">
+          <span class="countdown-digits" id="cdMinutes">00</span>
+          <span class="countdown-tag">DAKİKA</span>
+        </div>
+        <span class="countdown-colon" aria-hidden="true">:</span>
+        <div class="countdown-col">
+          <span class="countdown-digits" id="cdSeconds">00</span>
+          <span class="countdown-tag">SANİYE</span>
+        </div>
       </div>
     </div>
   </aside>
+
+  <script>
+    /* Standby 10 Ocak 2027 Geri Sayım Motoru */
+    (function initStandbyTimer() {
+      var target = new Date('2027-01-10T00:00:00+03:00').getTime();
+      var elD = document.getElementById('cdDays');
+      var elH = document.getElementById('cdHours');
+      var elM = document.getElementById('cdMinutes');
+      var elS = document.getElementById('cdSeconds');
+      function renderTime() {
+        var now = Date.now();
+        var diff = Math.max(0, target - now);
+        var d = Math.floor(diff / 86400000);
+        var h = Math.floor((diff % 86400000) / 3600000);
+        var m = Math.floor((diff % 3600000) / 60000);
+        var s = Math.floor((diff % 60000) / 1000);
+        if (elD) elD.textContent = d < 10 ? '0' + d : d;
+        if (elH) elH.textContent = h < 10 ? '0' + h : h;
+        if (elM) elM.textContent = m < 10 ? '0' + m : m;
+        if (elS) elS.textContent = s < 10 ? '0' + s : s;
+      }
+      renderTime();
+      setInterval(renderTime, 1000);
+    })();
+  </script>
 
 
 
