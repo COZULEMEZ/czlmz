@@ -4,6 +4,63 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NGB453BYV6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-NGB453BYV6');
+  </script>
+
+  <!-- Güvenlik & Gizlilik: Sağ Tık ve İncele / Geliştirici Kısayollarını Engelleme -->
+  <script>
+    (function() {
+      // Sağ tık menüsünü engelle
+      document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+      }, { capture: true });
+
+      // İncele, Geliştirici Konsolu ve Kaynak Kodu Kısayollarını Engelle
+      document.addEventListener('keydown', function(e) {
+        // F12
+        if (e.key === 'F12' || e.keyCode === 123) {
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
+        }
+
+        // Ctrl + Shift + I / J / C (DevTools & Console)
+        // Cmd + Option + I / J / C (macOS)
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && (
+          e.key === 'I' || e.key === 'i' || e.keyCode === 73 ||
+          e.key === 'J' || e.key === 'j' || e.keyCode === 74 ||
+          e.key === 'C' || e.key === 'c' || e.keyCode === 67
+        )) {
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
+        }
+
+        // Ctrl + U / Cmd + U (View Source)
+        if ((e.ctrlKey || e.metaKey) && (e.key === 'u' || e.key === 'U' || e.keyCode === 85)) {
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
+        }
+
+        // Ctrl + S / Cmd + S (Save Page)
+        if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S' || e.keyCode === 83)) {
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
+        }
+      }, { capture: true });
+    })();
+  </script>
   <!-- ╔══════════════════════════════════════════════════════════════╗
        GOOGLE TITLE — En çok aranan anahtar kelimeyi başa koy
        Format: [Anahtar Kelime] — [İkinci Kim] | [Sayfa Açıklaması]
@@ -2293,7 +2350,7 @@
     }
   </style>
 </head>
-<body class="standby-active">
+<body class="standby-active" oncontextmenu="return false;">
 
   <!-- ==========================================
        STANDBY THEME (FOREVER & COUNTDOWN TO 10 JAN 2027)
